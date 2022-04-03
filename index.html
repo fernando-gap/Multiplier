@@ -8,17 +8,18 @@
 </head>
 <body>
     <div>
-        <span>Highscore: <span id="points">0</span></span>
+        <span class="highscore">Highscore: <span id="points">0</span></span>
     </div>
-    <div>
+    <div class="center-content">
         <div id="numbers">
             <span id="num-1">X</span>
-            <span>x</span>
+            <span>&times;</span>
             <span id="num-2">Y</span>
         </div>
         <div>
             <label for="result-of-x*y">
-                <input id="result-of-x*y" type="number">
+                <div class="score-effect" id="effect"><span>+1</div>
+                <input id="result-of-x*y" type="number" placeholder="Guess the result...">
             </label>
         </div>
     </div>

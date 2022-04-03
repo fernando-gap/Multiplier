@@ -30,36 +30,34 @@
     border: 1px black solid;
     font-size: 2rem;
     height: 40px;
+    flex-shrink: 0;
 }
 
 .score-effect {
     visibility: hidden;
     height: 40px;
     width: 40px;
-    background-color: white;
+    color: white;
+    position: absolute;
+    display: inline;
     border-radius: 8px;
-    margin: 8px;
+    margin-left: 8px;
 }
 
 .score-effect.right-answer {
-    display: flex;
-    color: white;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    display: inline;
     opacity: 0;
     height: 40px;
     width: 40px;
     background-color: green;
     transform: translateY(-40px);
-    margin: 8px;
-    transition: opacity 0.5s, transform 0.5s;
+    transition: opacity 0.6s, transform 0.5s;
 }
 
 .score-effect.wrong-answer {
-    display: flex;
-    color: white;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    display: inline;
     opacity: 0;
     height: 40px;
     width: 40px;

@@ -35,13 +35,12 @@ result.addEventListener('keydown', function(e) {
                 multiplier = 3;
             }
 
-            //effect.classList.remove('right-answer');
-
         } else {
             isEffectGreen(false);
             sequenceOfRightAnswers = 0;
             multiplier = 1;
             numberOfPoints.innerHTML = "X";
+            result.value = "";
         }
     }
 })

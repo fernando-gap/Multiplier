@@ -31,16 +31,23 @@ result.addEventListener('keydown', function(e) {
 
             if (multiplier < 3 && sequenceOfRightAnswers === 10) {
                 multiplier = 2;
-            } else if (multiplier < 3 && sequenceOfRightAnswers === 20){
+            } else if (multiplier < 3 && sequenceOfRightAnswers === 30){
                 multiplier = 3;
             }
 
         } else {
             isEffectGreen(false);
             sequenceOfRightAnswers = 0;
-            multiplier = 1;
-            numberOfPoints.innerHTML = "X";
+            let isZero = updateHighScore(-1*multiplier);
+
+            if(isZero) {
+                numberOfPoints.innerHTML = "0";
+                return;
+            }
+
             result.value = "";
+            numberOfPoints.innerHTML = -1*multiplier;
+            multiplier = 1;
         }
     }
 })
@@ -87,14 +94,18 @@ function updateNumbers(one, two) {
     return one * two;
 }
 
-function updateHighScore(multiplier) {
+function updateHighScore(number) {
     let highscore = document.getElementById('points')
     let highscoreText = document.getElementById('score');
-    highscore.innerHTML = parseInt(highscore.innerHTML) + multiplier;
+
+    if (highscore.innerHTML === "0" && number < 0) {
+        return true;
+    }
+
+    highscore.innerHTML = parseInt(highscore.innerHTML) + number;
     highscoreText.classList.add('blink-score');
 
-
-    numberOfPoints.innerHTML = `+${multiplier}`;
+    numberOfPoints.innerHTML = number > 0 ? `+${number}` : number;
 
     highscoreText.addEventListener('animationend', function(e) {
         highscoreText.classList.remove('blink-score');

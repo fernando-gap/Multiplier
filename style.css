@@ -36,7 +36,6 @@
     visibility: hidden;
     height: 40px;
     width: 40px;
-    font-color: white;
     background-color: white;
     border-radius: 8px;
     margin: 8px;
@@ -67,4 +66,17 @@
     background-color: red;
     transform: translateY(-40px);
     transition: opacity 0.5s, transform 0.5s;
+}
+
+.blink-score {
+    color: black;
+    animation-duration: 0.25s;
+    animation-timing-function: linear;
+    animation-name: blinkText;
+}
+
+@keyframes blinkText {
+    50% {
+        color: white;
+    }
 }

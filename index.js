@@ -7,13 +7,6 @@ let numOne = document.getElementById('num-1');
 let numTwo = document.getElementById('num-2');
 let effect = document.getElementById('effect');
 
-/**
- * @return Integer between 10 and 1
- */
-
-const randomNumber = () => {
-    return Math.floor(Math.random() * 9 + 1);
-}
 
 /**
  * Generate random first numbers
@@ -51,6 +44,7 @@ result.addEventListener('keydown', function(e) {
     }
 })
 
+
 effect.addEventListener('webkitTransitionEnd', function(e) {
     for (const i of effect.classList) {
         if (i === 'right-answer' || i === 'wrong-answer') {
@@ -60,6 +54,19 @@ effect.addEventListener('webkitTransitionEnd', function(e) {
 
     effect.style.visibility = 'hidden';
 }, false);
+
+/**
+ * @return Integer between 10 and 1
+ */
+
+function randomNumber() {
+    return Math.floor(Math.random() * 9 + 1);
+}
+
+/**
+ * Display the effect whether the current
+ * answer is right or wrong.
+ */
 
 function isEffectGreen(active) {
     effect.style.visibility = 'visible';
@@ -81,5 +88,12 @@ function updateNumbers(one, two) {
 
 function updateHighScore(multiplier) {
     let highscore = document.getElementById('points')
+    let highscoreText = document.getElementById('score');
     highscore.innerHTML = parseInt(highscore.innerHTML) + multiplier;
+    highscoreText.classList.add('blink-score');
+
+
+    highscoreText.addEventListener('animationend', function(e) {
+        highscoreText.classList.remove('blink-score');
+    }, false);
 }

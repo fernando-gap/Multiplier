@@ -6,6 +6,7 @@ let sequenceOfRightAnswers = 0;
 let numOne = document.getElementById('num-1');
 let numTwo = document.getElementById('num-2');
 let effect = document.getElementById('effect');
+let numberOfPoints = document.getElementById('number-points');
 
 
 /**
@@ -40,6 +41,7 @@ result.addEventListener('keydown', function(e) {
             isEffectGreen(false);
             sequenceOfRightAnswers = 0;
             multiplier = 1;
+            numberOfPoints.innerHTML = "X";
         }
     }
 })
@@ -92,6 +94,8 @@ function updateHighScore(multiplier) {
     highscore.innerHTML = parseInt(highscore.innerHTML) + multiplier;
     highscoreText.classList.add('blink-score');
 
+
+    numberOfPoints.innerHTML = `+${multiplier}`;
 
     highscoreText.addEventListener('animationend', function(e) {
         highscoreText.classList.remove('blink-score');
